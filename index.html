@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <style>
+        body {
+            font-family: 'Trebuchet MS', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-image: url('img7.avif'); /* Replace with your background image URL */
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            text-align: center; /* Centering all text */
+        }
+
+        /* Loader Styles */
+        #loader {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .spinner {
+            border: 16px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 16px solid #3498db;
+            width: 120px;
+            height: 120px;
+            animation: spin 2s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        header {
+            background-color: green;
+            color: white;
+            text-align: center;
+            padding: 2em 0;
+        }
+
+        nav {
+            background-color: rgba(0, 0, 0, 0.8);
+            overflow: hidden;
+        }
+        nav a {
+            display: inline-block; /* Adjusted to center navigation links */
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        nav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .container {
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            margin: 20px;
+            border-radius: 8px;
+        }
+
+        section {
+            margin-bottom: 20px;
+        }
+
+        footer {
+            background-color: green;
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+        }
+
+        .profile-pic {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 20px;
+        }
+        .project {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            position: relative;
+        }
+        .project-images {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            grid-gap: 10px;
+        }
+        .project-images img {
+            width: 100%;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+        .project-images img:hover {
+            transform: scale(1.1);
+        }
+        .project-text {
+            transition: color 0.3s ease;
+        }
+        .project:hover .project-text {
+            color: #4CAF50;
+        }
+        h1, h2, h3 {
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+        h1:hover, h2:hover, h3:hover {
+            transform: scale(1.1);
+            color: #4CAF50;
+        }
+
+        /* About section specific styles */
+        .about-content {
+            text-align: justify;
+            background-color:green;
+            color: white;
+            max-width: 800px;
+            margin: 10px auto;
+            padding: 60px;
+            border-radius: 50px; /* Rounded corners */
+        }
+        .about-content h2 {
+            text-align: center; /* Center only the About Me heading */
+        }
+        .about-content h3, .about-content h4 {
+            text-align: center; /* Ensure other headings are left-aligned */
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            padding-top: 60px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.9);
+        }
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+        }
+        .modal-content img {
+            width: 100%;
+        }
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <!-- Loader HTML -->
+    <div id="loader">
+        <div class="spinner"></div>
+    </div>
+
+    <header>
+        <h1>My Portfolio</h1>
+        <p>Welcome to my personal portfolio website!</p>
+    </header>
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About Me</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+    </nav>
+    <div class="container" id="home">
+        <section>
+            <h2>Welcome</h2>
+            <p>This is Basant Singh, and I am an experienced SEO Executive with over 2 years of professional experience in search engine optimization. During my career, <b>I have had the opportunity to work at eSign Web Services, where I successfully managed and optimized more than 30 projects across various industries</b>. My expertise includes enhancing website visibility, driving organic traffic, and improving search engine rankings. I excel in conducting comprehensive keyword research, optimizing on-page and off-page elements that align with the latest SEO best practices. I am passionate about helping businesses expand their online presence and achieve their digital marketing goals. With a meticulous approach and a commitment to delivering results, I am dedicated to providing high-quality SEO solutions that yield measurable outcomes.</p>
+        </section>
+    </div>
+    <div class="container" id="about">
+        <section>
+            <div class="about-content">
+                <h2>About Me</h2>
+                <img src="profile1.jpg" alt="Profile Picture" class="profile-pic"> <!-- Replace with your profile picture URL -->
+                <p>With over two years of dedicated experience in the dynamic field of Search Engine Optimization (SEO), I have honed my skills to help businesses enhance their online visibility and drive organic traffic. My professional journey began at eSign Web Services, where I spent 1.5 years as a proactive SEO Executive. During this tenure, I developed and executed comprehensive SEO strategies that delivered measurable results.</p>
+                
+                <h3>Professional Experience</h3>
+                <h4>SEO Executive, eSign Web Services (1.5 years)</h4>
+                <p>As an SEO Executive at eSign Web Services for 1.5 years, I was instrumental in improving search engine rankings for various clients. My responsibilities included conducting thorough keyword research and competitive analysis, optimizing website content, meta tags, and on-page elements, managing link-building campaigns, monitoring and analyzing website performance using tools such as Google Analytics, Google Search Console, and SEMrush, generating detailed SEO reports to track progress and communicate results to clients and stakeholders, and staying updated with the latest trends and algorithm changes to adapt strategies accordingly.</p>
+
+                <h3>Skills and Expertise</h3>
+                <p>I am proficient in keyword research using tools like Ahrefs, Moz, and SEMrush to identify high-value keywords and optimize content accordingly. I have expertise in optimizing website structure, content, and HTML elements to improve search engine visibility. I am skilled in developing and executing effective link-building strategies to boost domain authority and traffic. I have the ability to perform technical audits and resolve issues affecting crawlability and indexability. I am proficient in using Google Analytics and Google Search Console to track and report on SEO performance.</p>
+                <h3>Personal Attributes</h3>
+                <p>As an analytical thinker with strong data analysis skills, I can derive actionable insights to optimize SEO strategies. My keen attention to detail ensures that all aspects of SEO are meticulously executed. I am adaptable and quick to learn new tools, technologies, and algorithm updates. I have a collaborative mindset with excellent communication skills, enabling effective teamwork and client interactions.</p>
+            </div>
+        </section>
+    </div>
+    <div class="container" id="projects">
+        <section>
+            <h2>Projects</h2>
+            <div class="projects-grid">
+                <div class="project">
+                    <h3 class="project-text">Project 1</h3>
+                    <div class="project-images">
+                        <img src="img1.png" alt="Project 1 Image" onclick="openModal(this.src)"> <!-- Replace with your project image URL -->
+                    </div>
+                    <p class="project-text">dentalclinicdelhi.com</p>
+                </div>
+                <div class="project">
+                    <h3 class="project-text">Project 2</h3>
+                    <div class="project-images">
+                        <img src="img2.png" alt="Project 2 Image" onclick="openModal(this.src)"> <!-- Replace with your project image URL -->
+                    </div>
+                    <p class="project-text">manchesterphotographystudio.com</p>
+                </div>
+                <div class="project">
+                    <h3 class="project-text">Project 3</h3>
+                    <div class="project-images">
+                        <img src="img3.png" alt="Project 3 Image" onclick="openModal(this.src)"> <!-- Replace with your project image URL -->
+                    </div>
+                    <p class="project-text">evangoodman.com</p>
+                </div>
+                <div class="project">
+                    <h3 class="project-text">Project 4</h3>
+                    <div class="project-images">
+                        <img src="img4.png" alt="Project 4 Image" onclick="openModal(this.src)"> <!-- Replace with your project image URL -->
+                    </div>
+                    <p class="project-text">pelicandrones.com</p>
+                </div>
+                <div class="project">
+                    <h3 class="project-text">Project 5</h3>
+                    <div class="project-images">
+                        <img src="img5.png" alt="Project 5 Image" onclick="openModal(this.src)"> <!-- Replace with your project image URL -->
+                    </div>
+                    <p class="project-text">juicejunction.com.au</p>
+                </div>
+                <div class="project">
+                    <h3 class="project-text">Project 6</h3>
+                    <div class="project-images">
+                        <img src="img6.png" alt="Project 6 Image" onclick="openModal(this.src)"> <!-- Replace with your project image URL -->
+                    </div>
+                    <p class="project-text">theleatherstropbarbershop.com</p>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div id="myModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <div class="modal-content">
+            <img id="modal-img">
+        </div>
+    </div>
+    <div class="container" id="contact">
+        <section>
+            <h2>Contact Me</h2>
+            <p>If you would like to get in touch, please reach out via email or Socail Media:</p>
+            <p>Email: <a href="rawalbasnt08@gmail.com">rawalbasnt08@gmail.com</a></p>
+            <p>Linkedin: <a href="https://www.linkedin.com/in/basant-singh-rawal/">Linkedin Profile</a></p>
+        </section>
+    </div>
+    <footer>
+        <p>&copy; 2024 My Portfolio. All Rights Reserved.</p>
+    </footer>
+
+    <!-- JavaScript to hide loader after page load -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var loader = document.getElementById('loader');
+            setTimeout(function() {
+                loader.style.display = 'none';
+            }, 2000); // 2 seconds delay
+        });
+
+        // JavaScript for Modal functionality
+        function openModal(src) {
+            var modal = document.getElementById("myModal");
+            var modalImg = document.getElementById("modal-img");
+            modal.style.display = "block";
+            modalImg.src = src;
+        }
+
+        function closeModal() {
+            var modal = document.getElementById("myModal");
+            modal.style.display = "none";
+        }
+    </script>
+</body>
+</html>
